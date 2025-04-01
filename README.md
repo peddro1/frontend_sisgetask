@@ -1,4 +1,4 @@
-# 📌 Projeto: Documentação e Desenvolvimento Ágil
+# 📌 Projeto: Sistema de Gestão de Tarefas
 
 ## 📋 Matriz de Requisitos
 ### 🎯 Finalidade: Imersão
@@ -9,6 +9,9 @@ Gerar uma planilha detalhada contendo:
 - **Requisitos Funcionais (RF):** Funcionalidades que o sistema deve oferecer para atender às necessidades do usuário.
 - **Requisitos Não Funcionais (RNF):** Características que definem restrições ou qualidades do sistema, como segurança, desempenho, escalabilidade e usabilidade.
 
+### 📜 Resultado
+https://docs.google.com/spreadsheets/d/1yYjmzwWoPQEXNeHCpLPaztU0F_QB1FHULPFtVzqQRCg/edit?usp=drivesdk
+
 ---
 
 ## 📌 Diagrama de Casos de Uso
@@ -18,10 +21,8 @@ Mapear os requisitos funcionais em casos de uso, identificando os atores e seus 
 ### 🏗️ Descrição
 O diagrama de casos de uso servirá como uma representação visual das interações dos usuários com o sistema, permitindo um melhor entendimento das funcionalidades esperadas. A definição dos atores e seus relacionamentos ajuda na estruturação dos fluxos principais e alternativos, garantindo que todos os cenários sejam contemplados antes do desenvolvimento.
 
-Ferramentas sugeridas para criação do diagrama:
-- **Draw.io**
-- **Enterprise Architect**
-- **Lucidchart**
+### 📜 Resultado
+TODO
 
 ---
 
@@ -39,6 +40,9 @@ Principais conceitos abordados:
 - **Arquitetura baseada em componentes** no Next.js (React/TypeScript)
 - **RESTful API e comunicação entre serviços**
 
+### 📜 Resultado
+TODO
+
 ---
 
 ## 📌 Protótipos Navegáveis
@@ -50,6 +54,9 @@ O uso de protótipos navegáveis permite testar a experiência do usuário antes
 1. **Wireframes de baixa fidelidade:** Esboços iniciais das telas.
 2. **Protótipos de alta fidelidade:** Interfaces próximas da versão final do sistema.
 3. **Interações e transições:** Simulação de navegação entre as telas.
+
+### 📜 Resultado
+TODO
 
 ---
 
@@ -67,9 +74,10 @@ O desenvolvimento do sistema será conduzido com a metodologia **Scrum**, garant
 O desenvolvimento será realizado com um stack moderno e eficiente:
 - **Back-end:** Python com Django
 - **Front-end:** React com TypeScript (Next.js)
-- **Banco de Dados:** PostgreSQL ou SQLite (para desenvolvimento local)
+- **Banco de Dados:** PostgreSQL
 - **Versionamento de Código:** Git/GitHub
-- **Gerenciamento de Projetos:** Jira/Trello
+- **Gerenciamento de Projetos:** TODO
 
-📌 Esse documento pode ser atualizado conforme novas decisões forem tomadas ao longo do desenvolvimento do projeto.
+### 📜 Resultado
+TODO
 
