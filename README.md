@@ -14,6 +14,7 @@ A matriz de requisitos tem como propósito proporcionar uma visão detalhada dos
 
 ---
 
+
 ## 📌 Diagrama de Casos de Uso
 ### 🎯 Objetivo
 Mapear os requisitos funcionais em casos de uso, identificando os atores e seus relacionamentos.
@@ -25,6 +26,7 @@ O diagrama de casos de uso servirá como uma representação visual das interaç
 ⏳ TODO
 
 ---
+
 
 ## 📌 Desenhos Arquiteturais
 ### 🎯 Objetivo
@@ -45,6 +47,7 @@ Principais conceitos abordados:
 
 ---
 
+
 ## 📌 Protótipos Navegáveis
 ### 🎯 Objetivo
 Criar um fluxo navegável utilizando protótipos interativos na ferramenta **Figma**.
@@ -59,6 +62,7 @@ O uso de protótipos navegáveis permite testar a experiência do usuário antes
 ⏳ TODO
 
 ---
+
 
 ## 📌 Desenvolvimento com Agile Methods - Scrum
 ### 🏗️ Descrição
