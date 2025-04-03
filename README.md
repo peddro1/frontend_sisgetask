@@ -48,6 +48,11 @@ Principais conceitos abordados:
 ![Design Patterns Diagram](assets/design-patterns-diagram.png)
 Referencia: [Here](https://app.diagrams.net/#G1VYy54nV43Rpa2XUR_geHpgLJEXKmDzgB#%7B%22pageId%22%3A%22VLWbXN40xIOT4k_qEMl0%22%7D)
 
+**Visão de Camadas de Padrões de Projeto:**
+
+![Tools Diagram](assets/tools-diagram.png)
+Referencia: [Here](https://app.diagrams.net/#G1lL3wox_EhwEbK78nxCyEwZa4jBpLZ3Xt#%7B%22pageId%22%3A%22e0JVWoou_4UhJQXplKpA%22%7D)
+
 ---
 
 
