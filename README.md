@@ -43,15 +43,16 @@ Principais conceitos abordados:
 - **RESTful API e comunicação entre serviços**
 
 ### 📜 Resultado
+
+**Visão de Camadas de Ferramentas:**
+
+![Tools Diagram](assets/tools-diagram.png)
+Referencia: [Here](https://drive.google.com/file/d/1KHTdpXQNtR4hrZWp5g4AHgSG9nCd_4zQ/view?usp=sharing)
+
 **Visão de Camadas de Padrões de Projeto:**
 
 ![Design Patterns Diagram](assets/design-patterns-diagram.png)
-Referencia: [Here](https://app.diagrams.net/#G1VYy54nV43Rpa2XUR_geHpgLJEXKmDzgB#%7B%22pageId%22%3A%22VLWbXN40xIOT4k_qEMl0%22%7D)
-
-**Visão de Camadas de Padrões de Projeto:**
-
-![Tools Diagram](assets/tools-diagram.png)
-Referencia: [Here](https://app.diagrams.net/#G1lL3wox_EhwEbK78nxCyEwZa4jBpLZ3Xt#%7B%22pageId%22%3A%22e0JVWoou_4UhJQXplKpA%22%7D)
+Referencia: [Here](https://drive.google.com/file/d/1CFLXDmtlek1MU7FVd8E6z3ZY6PiDM1zk/view?usp=sharing)
 
 ---
 
