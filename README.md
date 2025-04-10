@@ -71,7 +71,9 @@ O uso de protótipos navegáveis permite testar a experiência do usuário antes
 3. **Interações e transições:** Simulação de navegação entre as telas.
 
 ### 📜 Resultado
-⏳ TODO
+[Workspace](https://www.figma.com/design/Nflh2VV3d03zD9NitOLNxy/Prototipos---tarefas?node-id=2-2&p=f&t=UNsZltgTjY2MN32A-0)
+
+[Navegável](https://www.figma.com/proto/Nflh2VV3d03zD9NitOLNxy/Prototipos-tarefas?node-id=2-2&p=f&t=UNsZltgTjY2MN32A-0&scaling=min-zoom&content-scaling=fixed&page-id=2%3A2&starting-point-node-id=18%3A6&show-proto-sidebar=1)
 
 ---
 
