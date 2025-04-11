@@ -49,12 +49,12 @@ Principais conceitos abordados:
 
 **Visão de Camadas de Ferramentas:**
 
-![Tools Diagram](assets/tools-diagram.png)
+![Tools Diagram](assets/tools-diagram.jpg)
 Referencia: [Here](https://drive.google.com/file/d/14MJlVH2kfbPF1Wq-PdXQGgUWIRlJXR1Z/view?usp=sharing)
 
 **Visão de Camadas de Padrões de Projeto:**
 
-![Design Patterns Diagram](assets/design-patterns-diagram.png)
+![Design Patterns Diagram](assets/design-patterns-diagram.jpg)
 Referencia: [Here](https://drive.google.com/file/d/1F_oUw0ZNWFO2L5j2ztnevedhOZMdENYT/view?usp=sharing)
 
 ORM: ORM (Object-Relational Mapping) é um padrão que mapeia classes Python para tabelas do banco de dados. No Django, ele permite interagir com o banco relacional usando código Python em vez de SQL. Isso simplifica operações como criar, ler, atualizar e deletar dados.
