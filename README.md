@@ -23,7 +23,8 @@ Mapear os requisitos funcionais em casos de uso, identificando os atores e seus 
 O diagrama de casos de uso servirá como uma representação visual das interações dos usuários com o sistema, permitindo um melhor entendimento das funcionalidades esperadas. A definição dos atores e seus relacionamentos ajuda na estruturação dos fluxos principais e alternativos, garantindo que todos os cenários sejam contemplados antes do desenvolvimento.
 
 ### 📜 Resultado
-![Diagrama de Casos de Uso](https://drive.google.com/uc?export=view&id=1R8N7zzlmAwQ0JIp2YB8q2MtugzqY1Cdq)
+![Diagrama de Casos de Uso](https://drive.google.com/uc?export=view&id=19nr94dNdO2axA7fpeJmroBcKGX1lv5B9)
+
 
 Referência: [HERE](https://drive.google.com/file/d/1G0ASWGfHC9LwzlMKUKj1P6tQT36Ttk-R/view?usp=sharing)
 
