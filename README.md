@@ -50,12 +50,22 @@ Principais conceitos abordados:
 **Visão de Camadas de Ferramentas:**
 
 ![Tools Diagram](assets/tools-diagram.png)
-Referencia: [Here](https://drive.google.com/file/d/1KHTdpXQNtR4hrZWp5g4AHgSG9nCd_4zQ/view?usp=sharing)
+Referencia: [Here](https://drive.google.com/file/d/14MJlVH2kfbPF1Wq-PdXQGgUWIRlJXR1Z/view?usp=sharing)
 
 **Visão de Camadas de Padrões de Projeto:**
 
 ![Design Patterns Diagram](assets/design-patterns-diagram.png)
-Referencia: [Here](https://drive.google.com/file/d/1CFLXDmtlek1MU7FVd8E6z3ZY6PiDM1zk/view?usp=sharing)
+Referencia: [Here](https://drive.google.com/file/d/1F_oUw0ZNWFO2L5j2ztnevedhOZMdENYT/view?usp=sharing)
+
+ORM: ORM (Object-Relational Mapping) é um padrão que mapeia classes Python para tabelas do banco de dados. No Django, ele permite interagir com o banco relacional usando código Python em vez de SQL. Isso simplifica operações como criar, ler, atualizar e deletar dados.
+
+MVS: MVS (Model-View-Serializer) é um padrão usado no Django REST Framework. O Model representa a estrutura dos dados, o View trata as requisições e o Serializer converte os dados entre JSON e objetos Python. Juntos, permitem criar APIs de forma rápida e organizada.
+
+API REST: O padrão REST define regras para criar APIs que usam HTTP para comunicação. Ele organiza os recursos da aplicação em endpoints com métodos como GET, POST, PUT e DELETE. É simples, escalável e amplamente usado em sistemas web.
+
+Service Layer: O padrão Service Layer centraliza a lógica de negócios em classes de serviço, separando-a das views e dos models. Isso organiza melhor o código, facilita testes e reaproveitamento. É útil em projetos com regras complexas ou múltiplas fontes de dados.
+
+Feature-based: o padrão Feature Based organiza os arquivos por funcionalidades (features) em vez de tipos (como separar todos os componentes ou páginas). Cada pasta representa uma feature e contém seus próprios componentes, hooks, estilos e testes. Isso torna o projeto mais modular, escalável e fácil de manter.
 
 ---
 
