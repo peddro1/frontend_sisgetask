@@ -107,5 +107,5 @@ O desenvolvimento será realizado com um stack moderno e eficiente:
 - **Gerenciamento de Projetos:** ⏳ TODO
 
 ### 📜 Resultado
-⏳ TODO
+[Link para o Back-end](https://github.com/peddro1/BackEnd_SISGETASK)
 
