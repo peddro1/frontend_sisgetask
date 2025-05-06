@@ -9,7 +9,7 @@ Gerar uma planilha detalhada contendo:
 ### 🏗️ Descrição 
 A matriz de requisitos tem como propósito proporcionar uma visão detalhada dos requisitos do sistema, permitindo uma melhor compreensão e alinhamento entre os stakeholders. A imersão nesse processo visa garantir que todas as necessidades do sistema sejam documentadas e classificadas corretamente.
 
-### 📜 Resultado 
+### 📜 Matriz de Requisitos (Big-Picture)
 ✅ https://docs.google.com/spreadsheets/d/1yYjmzwWoPQEXNeHCpLPaztU0F_QB1FHULPFtVzqQRCg/edit?usp=drivesdk
 
 ---
@@ -22,7 +22,7 @@ Mapear os requisitos funcionais em casos de uso, identificando os atores e seus 
 ### 🏗️ Descrição
 O diagrama de casos de uso servirá como uma representação visual das interações dos usuários com o sistema, permitindo um melhor entendimento das funcionalidades esperadas. A definição dos atores e seus relacionamentos ajuda na estruturação dos fluxos principais e alternativos, garantindo que todos os cenários sejam contemplados antes do desenvolvimento.
 
-### 📜 Resultado
+### 📜 Diagrama de Casos de Uso (Big-Picture)
 [![Diagrama de Caso de Uso (Big Picture)](https://drive.google.com/thumbnail?id=1sQHxPK_Wj4Ge-EhAupZWP5G2NxJWphkl)](https://drive.google.com/file/d/1sQHxPK_Wj4Ge-EhAupZWP5G2NxJWphkl/view?usp=sharing)
 
 Referência: [HERE](https://drive.google.com/file/d/1G0ASWGfHC9LwzlMKUKj1P6tQT36Ttk-R/view?usp=sharing)
@@ -45,7 +45,7 @@ Principais conceitos abordados:
 - **Arquitetura baseada em componentes** no Next.js (React/TypeScript)
 - **RESTful API e comunicação entre serviços**
 
-### 📜 Resultado
+### 📜 Desenhos Arquiteturais (Big-Picture)
 
 **Visão de Camadas de Ferramentas:**
 
@@ -80,7 +80,7 @@ O uso de protótipos navegáveis permite testar a experiência do usuário antes
 2. **Protótipos de alta fidelidade:** Interfaces próximas da versão final do sistema.
 3. **Interações e transições:** Simulação de navegação entre as telas.
 
-### 📜 Resultado
+### 📜 Protótipos Navegáveis (Workspace e navegável)
 [Workspace](https://www.figma.com/design/Nflh2VV3d03zD9NitOLNxy/Prototipos---tarefas?node-id=2-2&p=f&t=UNsZltgTjY2MN32A-0)
 
 [Navegável](https://www.figma.com/proto/Nflh2VV3d03zD9NitOLNxy/Prototipos-tarefas?node-id=2-2&p=f&t=UNsZltgTjY2MN32A-0&scaling=min-zoom&content-scaling=fixed&page-id=2%3A2&starting-point-node-id=18%3A6&show-proto-sidebar=1)
@@ -104,8 +104,7 @@ O desenvolvimento será realizado com um stack moderno e eficiente:
 - **Front-end:** React com TypeScript (Next.js)
 - **Banco de Dados:** PostgreSQL
 - **Versionamento de Código:** Git/GitHub
-- **Gerenciamento de Projetos:** ⏳ TODO
+- **Gerenciamento de Projetos:** GitHub
 
-### 📜 Resultado
+
 [Link para o Back-end](https://github.com/peddro1/BackEnd_SISGETASK)
-
