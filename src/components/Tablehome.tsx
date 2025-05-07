@@ -9,6 +9,9 @@ import TableRow from "@mui/material/TableRow";
 import Paper from "@mui/material/Paper";
 import "../styles/Tablehome.css";
 import { TaskResponse } from "@/app/services/taskService";
+import EditIcon from '@mui/icons-material/Edit';
+import DeleteIcon from '@mui/icons-material/Delete'
+import { useRouter } from "../../node_modules/next/navigation";
 
 const StyledTableCell = styled(TableCell)(({ theme }) => ({
   [`&.${tableCellClasses.head}`]: {
@@ -35,6 +38,8 @@ interface TablehomeProps {
 }
 
 export default function Tablehome({ tasks }: TablehomeProps) {
+  const router = useRouter();
+
   return (
     <TableContainer component={Paper} className="table_comp">
       <Table sx={{ minWidth: 700 }} aria-label="customized table">
@@ -57,7 +62,18 @@ export default function Tablehome({ tasks }: TablehomeProps) {
                   {task.name}
                 </StyledTableCell>
                 <StyledTableCell align="right">{task.status}</StyledTableCell>
-                <StyledTableCell align="right"></StyledTableCell>
+                <StyledTableCell align="right"> 
+                <button style={{
+                  all: 'unset', // limpa quase tudo
+                  cursor: 'pointer' // adiciona o cursor de botão
+                }} onClick={ () => {
+                  router.push("/edit-task?id=" + task.id)
+                }}>
+                  <EditIcon />
+                </button>
+               
+                <DeleteIcon/>
+                </StyledTableCell>
               </StyledTableRow>
             ))
           ) : (

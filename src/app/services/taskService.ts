@@ -71,3 +71,63 @@ export const getTasks = async (): Promise<TaskResponse[]> => {
     return [];
   }
 };
+
+export const getTaskByID = async ( id: string ): Promise<TaskResponse> => {
+  try {
+    const response = await api.get<TaskResponse>("/tasks/" + id + "/", {
+      params: {},
+    })
+
+    const task: TaskResponse = response.data
+    
+    return task
+  }
+  catch (error) {
+    const err = error as AxiosError;
+    console.error("Erro ao buscar tarefa:", err.message);
+    return { id: "",
+      name: "",
+      description: "",
+      start_date: "",
+      updated_at: "",
+      end_date: "",
+      status: ""
+    };
+  }
+}
+
+export const editTask = async ( id: string, formData: TaskFormData) : Promise<{ status: number; message: string }> => {
+
+  const contactPayload = {
+    name: formData.name,
+    description: formData.description,
+    status: formData.status,
+  };
+
+  try {
+    const response = await api.put("/tasks/" + id + "/", contactPayload);
+    return {
+      status: response.status,
+      message: "Tarefa editada com sucesso",
+    };
+  } catch (error) {
+    const err = error as AxiosError<{ message?: string }>;
+
+    if (err.response) {
+      return {
+        status: err.response.status,
+        message: err.response.data?.message || "Erro na edição da tarefa",
+      };
+    } else if (err.request) {
+      return {
+        status: 500,
+        message: "Erro de conexão com o servidor",
+      };
+    } else {
+      return {
+        status: 500,
+        message: "Erro inesperado ao editar contato",
+      };
+    }
+  }
+}
