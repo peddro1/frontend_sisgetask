@@ -8,10 +8,12 @@ import TableHead from "@mui/material/TableHead";
 import TableRow from "@mui/material/TableRow";
 import Paper from "@mui/material/Paper";
 import "../styles/Tablehome.css";
-import { TaskResponse } from "@/app/services/taskService";
+import { deleteTaskByID, getTasks, TaskResponse } from "@/app/services/taskService";
 import EditIcon from '@mui/icons-material/Edit';
 import DeleteIcon from '@mui/icons-material/Delete'
 import { useRouter } from "../../node_modules/next/navigation";
+import { useEffect, useState } from "react";
+import { toast } from "react-toastify";
 
 const StyledTableCell = styled(TableCell)(({ theme }) => ({
   [`&.${tableCellClasses.head}`]: {
@@ -37,8 +39,32 @@ interface TablehomeProps {
   tasks: TaskResponse[];
 }
 
-export default function Tablehome({ tasks }: TablehomeProps) {
+export default function Tablehome() {
   const router = useRouter();
+  const [tasks, setTasks] = useState<TaskResponse[]>([]);
+
+  useEffect(() => {
+    fetchTasks();
+  }, []);
+
+  const fetchTasks = async () => {
+    const data = await getTasks();
+    setTasks(data);
+  };
+  
+  const deleteTask = async (id: string) => {
+    try {
+      const response = await deleteTaskByID(id);
+      if (response.status === 204 ) {
+        toast.success("Tarefa excluida com sucesso!");
+      } else {
+        toast.error(response.message);
+      }
+      fetchTasks();
+    } catch (error) {
+      toast.error("Erro ao excluir tarefa.");
+    }
+  };
 
   return (
     <TableContainer component={Paper} className="table_comp">
@@ -71,8 +97,14 @@ export default function Tablehome({ tasks }: TablehomeProps) {
                 }}>
                   <EditIcon />
                 </button>
-               
-                <DeleteIcon/>
+                <button style={{
+                  all: 'unset', // limpa quase tudo
+                  cursor: 'pointer' // adiciona o cursor de botão
+                }} onClick={ () => {
+                  deleteTask(task.id)
+                }}>
+                  <DeleteIcon/>
+                </button>
                 </StyledTableCell>
               </StyledTableRow>
             ))

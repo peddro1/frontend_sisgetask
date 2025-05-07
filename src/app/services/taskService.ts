@@ -126,7 +126,43 @@ export const editTask = async ( id: string, formData: TaskFormData) : Promise<{ 
     } else {
       return {
         status: 500,
-        message: "Erro inesperado ao editar contato",
+        message: "Erro inesperado ao editar tarefa",
+      };
+    }
+  }
+}
+
+
+export const deleteTaskByID = async ( id: string ): 
+  Promise<{ status: number; message: string }>  => {
+  try {
+    const response = await api.delete("/tasks/" + id + "/", {
+      params: {},
+    })
+    return {
+      status: response.status,
+      message: "Tarefa criada com sucesso",
+    };
+    
+    
+  }
+  catch (error) {
+    const err = error as AxiosError<{ message?: string }>;
+
+    if (err.response) {
+      return {
+        status: err.response.status,
+        message: err.response.data?.message || "Erro ao deletar a tarefa",
+      };
+    } else if (err.request) {
+      return {
+        status: 500,
+        message: "Erro de conexão com o servidor",
+      };
+    } else {
+      return {
+        status: 500,
+        message: "Erro inesperado ao deletar tarefa",
       };
     }
   }
