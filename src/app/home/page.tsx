@@ -3,25 +3,13 @@
 import "../../styles/Home.css";
 import { Button } from "@mui/material";
 import { useRouter } from "next/navigation";
-import { useState, useEffect } from "react";
-import { getTasks, TaskResponse } from "../services/taskService";
 import Searchbar from "@/components/Searchbar";
 import Tablehome from "@/components/Tablehome";
 import React from "react";
 
 const Home: React.FC = () => {
   const router = useRouter();
-  const [tasks, setTasks] = useState<TaskResponse[]>([]);
-
-  useEffect(() => {
-    const fetchTasks = async () => {
-      const data = await getTasks();
-      setTasks(data);
-    };
-
-    fetchTasks();
-  }, []);
-
+ 
   return (
     <main>
       <div className="head">
@@ -42,7 +30,7 @@ const Home: React.FC = () => {
         <Searchbar />
       </div>
       <div className="table">
-        <Tablehome tasks={tasks} />
+        <Tablehome />
       </div>
     </main>
   );

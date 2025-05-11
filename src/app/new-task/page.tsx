@@ -1,6 +1,5 @@
 "use client";
 
-import { useState } from "react";
 import {
   Button,
   TextareaAutosize,
@@ -157,7 +156,7 @@ const NewTask: React.FC = () => {
       </div>
 
       <div className="description">
-        <div className="leftSide">Descrição da tarefa*</div>
+        <div className="leftSide" style={{color: "#0A6B1A"}}>Descrição da tarefa*</div>
       </div>
       <div className="text_area">
         <TextareaAutosize
@@ -170,6 +169,8 @@ const NewTask: React.FC = () => {
             border: "1px solid #0A6B1A", // borda
             borderRadius: "5px",
             outline: "3px #0A6B1A", // remove o azul padrão do foco
+            backgroundColor: "white",
+            color: "#0A6B1A", // cor do texto
           }}
           name="description"
           value={formValues.description}
