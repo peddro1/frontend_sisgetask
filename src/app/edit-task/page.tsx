@@ -17,10 +17,11 @@ import { editTask, getTaskByID, TaskResponse } from "../services/taskService";
 import { useRouter } from "next/navigation";
 import "react-toastify/dist/ReactToastify.css";
 import React from "react";
+import { Suspense } from "react";
 import { toast } from "react-toastify";
 import { useSearchParams } from "../../../node_modules/next/navigation";
 
-const EditTask: React.FC = () => {
+function EditTaskContent(){
     const router = useRouter();
     const searchParams = useSearchParams();
     const taskId = searchParams.get('id');
@@ -200,7 +201,17 @@ const EditTask: React.FC = () => {
           />
         </div>
       </div>
+      
     );
+}
+
+
+const EditTask: React.FC = () => {
+  return (
+    <Suspense fallback={<p>Carregando...</p>}>
+      <EditTaskContent />
+    </Suspense>
+  );
 }
 
 export default EditTask

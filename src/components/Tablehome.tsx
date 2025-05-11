@@ -14,6 +14,7 @@ import DeleteIcon from '@mui/icons-material/Delete'
 import { useRouter } from "../../node_modules/next/navigation";
 import { useEffect, useState } from "react";
 import { toast } from "react-toastify";
+import DeleteModal from "./DeleteModal";
 
 const StyledTableCell = styled(TableCell)(({ theme }) => ({
   [`&.${tableCellClasses.head}`]: {
@@ -42,6 +43,7 @@ interface TablehomeProps {
 export default function Tablehome() {
   const router = useRouter();
   const [tasks, setTasks] = useState<TaskResponse[]>([]);
+  const [isModalOpen, setModalOpen] = useState(false);
 
   useEffect(() => {
     fetchTasks();
@@ -60,12 +62,17 @@ export default function Tablehome() {
       } else {
         toast.error(response.message);
       }
+      setModalOpen(false)
       fetchTasks();
     } catch (error) {
       toast.error("Erro ao excluir tarefa.");
     }
   };
 
+  const closeModal = () => {
+    setModalOpen(false);
+  };
+  
   return (
     <TableContainer component={Paper} className="table_comp">
       <Table sx={{ minWidth: 700 }} aria-label="customized table">
@@ -101,10 +108,17 @@ export default function Tablehome() {
                   all: 'unset', // limpa quase tudo
                   cursor: 'pointer' // adiciona o cursor de botão
                 }} onClick={ () => {
-                  deleteTask(task.id)
+                  setModalOpen(true)
                 }}>
                   <DeleteIcon/>
+                  
                 </button>
+                <DeleteModal 
+                    open={isModalOpen}
+                    onClose = {() => {closeModal()}}
+                    onConfirm = {() => {deleteTask(task.id) }}
+                  >
+                  </DeleteModal>
                 </StyledTableCell>
               </StyledTableRow>
             ))
@@ -117,6 +131,8 @@ export default function Tablehome() {
           )}
         </TableBody>
       </Table>
+      
     </TableContainer>
+    
   );
 }
