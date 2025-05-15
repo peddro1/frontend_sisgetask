@@ -40,7 +40,7 @@ interface TablehomeProps {
   tasks: TaskResponse[];
 }
 
-export default function Tablehome() {
+export default function Tableusers() {
   const router = useRouter();
   const [tasks, setTasks] = useState<TaskResponse[]>([]);
   const [isModalOpen, setModalOpen] = useState(false);
@@ -79,7 +79,13 @@ export default function Tablehome() {
         <TableHead>
           <TableRow className="header">
             <StyledTableCell>
-              <strong>Todas as tarefas</strong>{" "}
+              <strong>Nome</strong>{" "}
+            </StyledTableCell>
+            <StyledTableCell align="right">
+              <strong>Email</strong>{" "}
+            </StyledTableCell>
+            <StyledTableCell align="right">
+              <strong>Perfil</strong>{" "}
             </StyledTableCell>
             <StyledTableCell align="right">
               <strong>Status</strong>{" "}
@@ -95,12 +101,18 @@ export default function Tablehome() {
                   {task.name}
                 </StyledTableCell>
                 <StyledTableCell align="right">{task.status}</StyledTableCell>
+                <StyledTableCell  align="right" component="th" scope="row">
+                  {task.name}
+                </StyledTableCell>
+                <StyledTableCell align="right" component="th" scope="row">
+                  {task.name}
+                </StyledTableCell>
                 <StyledTableCell align="right"> 
                 <button style={{
                   all: 'unset', // limpa quase tudo
                   cursor: 'pointer' // adiciona o cursor de botão
                 }} onClick={ () => {
-                  router.push("/edit-task?id=" + task.id)
+                  router.push("/edit-user?id=" + task.id)
                 }}>
                   <EditIcon />
                 </button>
@@ -124,8 +136,8 @@ export default function Tablehome() {
             ))
           ) : (
             <StyledTableRow>
-              <StyledTableCell colSpan={3} align="center">
-                Nenhuma tarefa encontrada.
+              <StyledTableCell colSpan={5} align="center">
+                Nenhum usuário encontrado.
               </StyledTableCell>
             </StyledTableRow>
           )}
