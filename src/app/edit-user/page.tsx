@@ -20,185 +20,171 @@ import React from "react";
 import { Suspense } from "react";
 import { toast } from "react-toastify";
 import { useSearchParams } from "../../../node_modules/next/navigation";
-import InputAdornment from '@mui/material/InputAdornment';
-import OutlinedInput from '@mui/material/OutlinedInput';
-import Visibility from '@mui/icons-material/Visibility';
-import VisibilityOff from '@mui/icons-material/VisibilityOff';
-import IconButton from '@mui/material/IconButton';
+import InputAdornment from "@mui/material/InputAdornment";
+import OutlinedInput from "@mui/material/OutlinedInput";
+import Visibility from "@mui/icons-material/Visibility";
+import VisibilityOff from "@mui/icons-material/VisibilityOff";
+import IconButton from "@mui/material/IconButton";
+import { editUser, getUserById, UserResponse } from "../services/userService";
 
-function EditUserContent(){
-    const router = useRouter();
-    const searchParams = useSearchParams();
-    const userId = searchParams.get('id');
-    const [task, setTask] = useState<TaskResponse>();
+function EditUserContent() {
+  const router = useRouter();
+  const searchParams = useSearchParams();
+  const userId = searchParams.get("id");
+  const [user, setUser] = useState<UserResponse>();
 
-    const [showPassword, setShowPassword] = React.useState(false);
-    const handleClickShowPassword = () => setShowPassword((show) => !show);
-  
-    const handleMouseDownPassword = (event: React.MouseEvent<HTMLButtonElement>) => {
-      event.preventDefault();
-    };
-  
-    const handleMouseUpPassword = (event: React.MouseEvent<HTMLButtonElement>) => {
-      event.preventDefault();
-    };
+  const [showPassword, setShowPassword] = React.useState(false);
+  const handleClickShowPassword = () => setShowPassword((show) => !show);
 
-    useEffect(() => {
-        const fetchTask = async () => {
-          
-          const data = await getTaskByID(userId?? "");
-          setTask(data);
-          setFormValues((prev) => ({
-            ...prev,
-            name: data.name,
-            description: data.description,
-            status: data.status,
-          }));
-          
-        };
-    
-        fetchTask();
-    }, []);
+  const handleMouseDownPassword = (
+    event: React.MouseEvent<HTMLButtonElement>
+  ) => {
+    event.preventDefault();
+  };
 
-    const [formValues, setFormValues] = React.useState<TaskFormData>({
-      name: "",
-      description: "",
-      status: "",
-    });
-  
-    const handleChangeInput = (
-      event: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
-    ) => {
-      const { name, value } = event.target;
+  const handleMouseUpPassword = (
+    event: React.MouseEvent<HTMLButtonElement>
+  ) => {
+    event.preventDefault();
+  };
+
+  useEffect(() => {
+    const fetchUser = async () => {
+      const data = await getUserById(userId ?? "");
+      setUser(data);
       setFormValues((prev) => ({
         ...prev,
-        [name]: value,
+        first_name: data.first_name,
+        email: data.email,
       }));
     };
-  
-    const handleSubmit = async () => {
-      try {
-        const response = await editTask(task?.id?? "", formValues);
-        if (response.status === 201 || response.status === 200) {
-          toast.success("Tarefa editada com sucesso!");
-          router.push("/home");
-        } else {
-          toast.error(response.message);
-        }
-      } catch (error) {
-        toast.error("Erro ao editada tarefa.");
+
+    fetchUser();
+  }, []);
+
+  const [formValues, setFormValues] = React.useState<UserFormData>({
+    first_name: "",
+    email: "",
+    is_active: true,
+    password: "",
+  });
+
+  const handleChangeInput = (
+    event: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+  ) => {
+    const { name, value } = event.target;
+    setFormValues((prev) => ({
+      ...prev,
+      [name]: value,
+    }));
+  };
+
+  const handleSubmit = async () => {
+    try {
+      const response = await editUser(user?.id ?? "", formValues);
+      if (response.status === 201 || response.status === 200) {
+        toast.success("Usuário editado com sucesso.");
+        router.push("/users");
+      } else {
+        toast.error(response.message);
       }
-    };
-  
-    return (
-        <div>
-        <div className="head">
-          <div className="leftSide">
-            <h1 className="title">Editar usuário</h1>
-          </div>
-          <div className="rightSide">
-            <Button
-              variant="contained"
-              className="btn_save_task"
-              onClick={handleSubmit}
-            >
-              <strong>salvar</strong>
-            </Button>
-          </div>
+    } catch (error) {
+      toast.error("Erro ao editar usuário.");
+    }
+  };
+
+  return (
+    <div>
+      <div className="head">
+        <div className="leftSide">
+          <h1 className="title">Editar usuário</h1>
         </div>
-  
-        <div className="text_area">
-          
+        <div className="rightSide">
+          <Button
+            variant="contained"
+            className="btn_save_task"
+            onClick={handleSubmit}
+          >
+            <strong>salvar</strong>
+          </Button>
+        </div>
+      </div>
+
+      <div className="text_area">
+        <TextField
+          id="outlined-basic"
+          label="Nome"
+          variant="outlined"
+          fullWidth
+          sx={{
+            input: {
+              color: "#0A6B1A", // texto digitado
+            },
+            label: {
+              color: "#0A6B1A", // cor da label
+            },
+            "& label.Mui-focused": {
+              color: "#0A6B1A", // cor da label quando focada
+            },
+            "& .MuiOutlinedInput-root": {
+              "& fieldset": {
+                borderColor: "#0A6B1A", // borda normal
+              },
+              "&:hover fieldset": {
+                borderColor: "#0A6B1A", // borda ao passar o mouse
+              },
+              "&.Mui-focused fieldset": {
+                borderColor: "#0A6B1A", // borda ao focar
+              },
+            },
+          }}
+          name="first_name"
+          value={formValues.first_name}
+          onChange={handleChangeInput}
+        />
+      </div>
+
+      <div className="row_1">
+        <div className="leftSide1">
           <TextField
-                id="outlined-basic"
-                label="Nome"
-                variant="outlined"
-                fullWidth
-                sx={{
-                  input: {
-                    color: "#0A6B1A", // texto digitado
-                  },
-                  label: {
-                    color: "#0A6B1A", // cor da label
-                  },
-                  "& label.Mui-focused": {
-                    color: "#0A6B1A", // cor da label quando focada
-                  },
-                  "& .MuiOutlinedInput-root": {
-                    "& fieldset": {
-                      borderColor: "#0A6B1A", // borda normal
-                    },
-                    "&:hover fieldset": {
-                      borderColor: "#0A6B1A", // borda ao passar o mouse
-                    },
-                    "&.Mui-focused fieldset": {
-                      borderColor: "#0A6B1A", // borda ao focar
-                    },
-                  },
-                }}
-                name="name"
-                value={formValues.name}
-                onChange={handleChangeInput}
-              />
-          </div>  
-  
-        <div className="row_1">
-          <div className="leftSide1">
-            <TextField
-              id="outlined-basic"
-              label="Email"
-              variant="outlined"
-              fullWidth
-              sx={{
-                input: {
-                  color: "#0A6B1A", // texto digitado
+            id="outlined-basic"
+            label="Email"
+            variant="outlined"
+            fullWidth
+            sx={{
+              input: {
+                color: "#0A6B1A", // texto digitado
+              },
+              label: {
+                color: "#0A6B1A", // cor da label
+              },
+              "& label.Mui-focused": {
+                color: "#0A6B1A", // cor da label quando focada
+              },
+              "& .MuiOutlinedInput-root": {
+                "& fieldset": {
+                  borderColor: "#0A6B1A", // borda normal
                 },
-                label: {
-                  color: "#0A6B1A", // cor da label
+                "&:hover fieldset": {
+                  borderColor: "#0A6B1A", // borda ao passar o mouse
                 },
-                "& label.Mui-focused": {
-                  color: "#0A6B1A", // cor da label quando focada
+                "&.Mui-focused fieldset": {
+                  borderColor: "#0A6B1A", // borda ao focar
                 },
-                "& .MuiOutlinedInput-root": {
-                  "& fieldset": {
-                    borderColor: "#0A6B1A", // borda normal
-                  },
-                  "&:hover fieldset": {
-                    borderColor: "#0A6B1A", // borda ao passar o mouse
-                  },
-                  "&.Mui-focused fieldset": {
-                    borderColor: "#0A6B1A", // borda ao focar
-                  },
-                },
-              }}
-              name="description"
-              value={formValues.description}
-              onChange={handleChangeInput}
-            />
-          </div>
-          <div className="rightSide1">
-          <FormControl sx={{ 
-                    m: 1, 
-                    width: '22ch',  
-                    backgroundColor: "#F0FFF0", // cor de fundo
-                    color: "#0A6B1A", // cor do texto
-                    ".MuiOutlinedInput-notchedOutline": {
-                      borderColor: "#0A6B1A", // borda normal
-                    },
-                    "&.Mui-focused .MuiOutlinedInput-notchedOutline": {
-                      borderColor: "#0A6B1A", // borda ao focar
-                    },
-                    "&:hover .MuiOutlinedInput-notchedOutline": {
-                      borderColor: "#0A6B1A", // borda ao passar o mouse
-                    },
-                    ".MuiSvgIcon-root": {
-                      color: "#0A6B1A", // cor do ícone (setinha)
-                    }, }} variant="outlined">
-            <InputLabel htmlFor="outlined-adornment-password" sx={{color: "#0A6B1A !important"}} name="senha">Senha</InputLabel>
-            <OutlinedInput
-              id="outlined-adornment-password"
-              type={showPassword ? 'text' : 'password'}
-              sx={{ 
+              },
+            }}
+            name="email"
+            value={formValues.email}
+            onChange={handleChangeInput}
+          />
+        </div>
+        <div className="rightSide1">
+          <FormControl
+            sx={{
+              m: 1,
+              width: "22ch",
+              backgroundColor: "#F0FFF0", // cor de fundo
+              color: "#0A6B1A", // cor do texto
               ".MuiOutlinedInput-notchedOutline": {
                 borderColor: "#0A6B1A", // borda normal
               },
@@ -210,12 +196,41 @@ function EditUserContent(){
               },
               ".MuiSvgIcon-root": {
                 color: "#0A6B1A", // cor do ícone (setinha)
-              }}}
+              },
+            }}
+            variant="outlined"
+          >
+            <InputLabel
+              htmlFor="outlined-adornment-password"
+              sx={{ color: "#0A6B1A !important" }}
+              name="password"
+            >
+              Senha
+            </InputLabel>
+            <OutlinedInput
+              id="outlined-adornment-password"
+              type={showPassword ? "text" : "password"}
+              sx={{
+                ".MuiOutlinedInput-notchedOutline": {
+                  borderColor: "#0A6B1A", // borda normal
+                },
+                "&.Mui-focused .MuiOutlinedInput-notchedOutline": {
+                  borderColor: "#0A6B1A", // borda ao focar
+                },
+                "&:hover .MuiOutlinedInput-notchedOutline": {
+                  borderColor: "#0A6B1A", // borda ao passar o mouse
+                },
+                ".MuiSvgIcon-root": {
+                  color: "#0A6B1A", // cor do ícone (setinha)
+                },
+              }}
               endAdornment={
                 <InputAdornment position="end">
                   <IconButton
                     aria-label={
-                      showPassword ? 'hide the password' : 'display the password'
+                      showPassword
+                        ? "hide the password"
+                        : "display the password"
                     }
                     onClick={handleClickShowPassword}
                     onMouseDown={handleMouseDownPassword}
@@ -227,13 +242,14 @@ function EditUserContent(){
                 </InputAdornment>
               }
               label="senha"
+              value={formValues.password}
+              onChange={handleChangeInput}
             />
           </FormControl>
-            
-          </div>
         </div>
       </div>
-    );
+    </div>
+  );
 }
 
 const EditTask: React.FC = () => {
@@ -242,6 +258,6 @@ const EditTask: React.FC = () => {
       <EditUserContent />
     </Suspense>
   );
-}
+};
 
-export default EditTask
+export default EditTask;

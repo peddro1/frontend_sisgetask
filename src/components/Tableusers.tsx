@@ -8,13 +8,22 @@ import TableHead from "@mui/material/TableHead";
 import TableRow from "@mui/material/TableRow";
 import Paper from "@mui/material/Paper";
 import "../styles/Tablehome.css";
-import { deleteTaskByID, getTasks, TaskResponse } from "@/app/services/taskService";
-import EditIcon from '@mui/icons-material/Edit';
-import DeleteIcon from '@mui/icons-material/Delete'
+import {
+  deleteTaskByID,
+  getTasks,
+  TaskResponse,
+} from "@/app/services/taskService";
+import EditIcon from "@mui/icons-material/Edit";
+import DeleteIcon from "@mui/icons-material/Delete";
 import { useRouter } from "../../node_modules/next/navigation";
 import { useEffect, useState } from "react";
 import { toast } from "react-toastify";
 import DeleteModal from "./DeleteModal";
+import {
+  deleteUserByID,
+  getUsers,
+  UserResponse,
+} from "@/app/services/userService";
 
 const StyledTableCell = styled(TableCell)(({ theme }) => ({
   [`&.${tableCellClasses.head}`]: {
@@ -37,42 +46,42 @@ const StyledTableRow = styled(TableRow)(({ theme }) => ({
 }));
 
 interface TablehomeProps {
-  tasks: TaskResponse[];
+  users: UserResponse[];
 }
 
 export default function Tableusers() {
   const router = useRouter();
-  const [tasks, setTasks] = useState<TaskResponse[]>([]);
+  const [users, setUsers] = useState<UserResponse[]>([]);
   const [isModalOpen, setModalOpen] = useState(false);
 
   useEffect(() => {
-    fetchTasks();
+    fetchUsers();
   }, []);
 
-  const fetchTasks = async () => {
-    const data = await getTasks();
-    setTasks(data);
+  const fetchUsers = async () => {
+    const data = await getUsers();
+    setUsers(data);
   };
-  
-  const deleteTask = async (id: string) => {
+
+  const deleteUser = async (id: string) => {
     try {
-      const response = await deleteTaskByID(id);
-      if (response.status === 204 ) {
-        toast.success("Tarefa excluida com sucesso!");
+      const response = await deleteUserByID(id);
+      if (response.status === 204) {
+        toast.success("Usuário excluído com sucesso!");
       } else {
         toast.error(response.message);
       }
-      setModalOpen(false)
-      fetchTasks();
+      setModalOpen(false);
+      fetchUsers();
     } catch (error) {
-      toast.error("Erro ao excluir tarefa.");
+      toast.error("Erro ao excluir usuário.");
     }
   };
 
   const closeModal = () => {
     setModalOpen(false);
   };
-  
+
   return (
     <TableContainer component={Paper} className="table_comp">
       <Table sx={{ minWidth: 700 }} aria-label="customized table">
@@ -94,43 +103,51 @@ export default function Tableusers() {
           </TableRow>
         </TableHead>
         <TableBody>
-          {tasks.length > 0 ? (
-            tasks.map((task) => (
-              <StyledTableRow key={task.id}>
+          {users.length > 0 ? (
+            users.map((user) => (
+              <StyledTableRow key={user.id}>
                 <StyledTableCell component="th" scope="row">
-                  {task.name}
+                  {user.first_name}
                 </StyledTableCell>
-                <StyledTableCell align="right">{task.status}</StyledTableCell>
-                <StyledTableCell  align="right" component="th" scope="row">
-                  {task.name}
+                <StyledTableCell align="right">{user.email}</StyledTableCell>
+                <StyledTableCell align="right" component="th" scope="row">
+                  {user.is_active}
                 </StyledTableCell>
                 <StyledTableCell align="right" component="th" scope="row">
-                  {task.name}
+                  {user.is_active ? "Ativo" : "Inativo"}
                 </StyledTableCell>
-                <StyledTableCell align="right"> 
-                <button style={{
-                  all: 'unset', // limpa quase tudo
-                  cursor: 'pointer' // adiciona o cursor de botão
-                }} onClick={ () => {
-                  router.push("/edit-user?id=" + task.id)
-                }}>
-                  <EditIcon />
-                </button>
-                <button style={{
-                  all: 'unset', // limpa quase tudo
-                  cursor: 'pointer' // adiciona o cursor de botão
-                }} onClick={ () => {
-                  setModalOpen(true)
-                }}>
-                  <DeleteIcon/>
-                  
-                </button>
-                <DeleteModal 
-                    open={isModalOpen}
-                    onClose = {() => {closeModal()}}
-                    onConfirm = {() => {deleteTask(task.id) }}
+                <StyledTableCell align="right">
+                  <button
+                    style={{
+                      all: "unset", // limpa quase tudo
+                      cursor: "pointer", // adiciona o cursor de botão
+                    }}
+                    onClick={() => {
+                      router.push("/edit-user?id=" + user.id);
+                    }}
                   >
-                  </DeleteModal>
+                    <EditIcon />
+                  </button>
+                  <button
+                    style={{
+                      all: "unset", // limpa quase tudo
+                      cursor: "pointer", // adiciona o cursor de botão
+                    }}
+                    onClick={() => {
+                      setModalOpen(true);
+                    }}
+                  >
+                    <DeleteIcon />
+                  </button>
+                  <DeleteModal
+                    open={isModalOpen}
+                    onClose={() => {
+                      closeModal();
+                    }}
+                    onConfirm={() => {
+                      deleteUser(user.id);
+                    }}
+                  ></DeleteModal>
                 </StyledTableCell>
               </StyledTableRow>
             ))
