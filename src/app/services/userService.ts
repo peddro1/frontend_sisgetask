@@ -81,12 +81,9 @@ export const getUserById = async (id: string): Promise<UserResponse> => {
     console.error("Erro ao buscar usuário:", err.message);
     return {
       id: "",
-      name: "",
-      description: "",
-      start_date: "",
-      updated_at: "",
-      end_date: "",
-      status: "",
+      first_name: "",
+      email: "",
+      is_active: "",
     };
   }
 };

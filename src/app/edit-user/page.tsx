@@ -203,7 +203,6 @@ function EditUserContent() {
             <InputLabel
               htmlFor="outlined-adornment-password"
               sx={{ color: "#0A6B1A !important" }}
-              name="password"
             >
               Senha
             </InputLabel>
